@@ -1,0 +1,33 @@
+terraform apply "dns.out"
+
+resource "hcloud_zone_rrset" "test2" {
+  zone = data.hcloud_zone.zone.id   # or: data.hcloud_zone.zone.name
+  name = "www"
+  type = "A"
+  ttl  = 60
+
+  records = [{ value = "1.2.3.4" }]
+}
+
+Minimal (hardcode as a string)
+zone = "n0d.site"
+
+
+Then run:
+
+terraform fmt
+terraform init -upgrade
+terraform plan
+
+
+One more thing: you’re pinned to version = "~> 1.50". DNS/RRSet support landed later than some older versions, so if you hit “unknown resource” errors, bump it:
+
+version = ">= 1.57.0"
+
+
+And re-run terraform init -upgrade.
+
+If terraform plan still prompts for a token, set it like this in WSL before running plan/apply:
+
+export HCLOUD_TOKEN="your_token"
+
