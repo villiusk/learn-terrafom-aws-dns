@@ -16,20 +16,39 @@ data "hcloud_zone" "zone" {
   name = "n0d.site"
 }
 
-resource "hcloud_zone_rrset" "test2" {
+resource "hcloud_zone_rrset" "gw" {
   zone = "n0d.site"
-  name = "qw"
+  name = "gw"
   type = "A"
   ttl  = 60
 
   records = [{ value = "192.168.1.1" }]
 }
 
-resource "hcloud_zone_rrset" "test3" {
+resource "hcloud_zone_rrset" "kvm" {
   zone = "n0d.site"
   name = "kvm"
   type = "A"
   ttl  = 60
 
   records = [{ value = "192.168.1.4" }]
+}
+
+resource "hcloud_zone_rrset" "minio" {
+  zone = "n0d.site"
+  name = "minio"
+  type = "A"
+  ttl  = 60
+
+  records = [{ value = "192.168.1.11" }]
+}
+
+
+resource "hcloud_zone_rrset" "garage" {
+  zone = "n0d.site"
+  name = "garage"
+  type = "A"
+  ttl  = 60
+
+  records = [{ value = "192.168.1.11" }]
 }
