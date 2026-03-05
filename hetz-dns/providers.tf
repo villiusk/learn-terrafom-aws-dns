@@ -16,5 +16,7 @@ terraform {
     skip_region_validation      = true
     skip_requesting_account_id  = true
     skip_metadata_api_check     = true
+
+    profile = "minio"      # backend always uses MinIO creds
   }
 }

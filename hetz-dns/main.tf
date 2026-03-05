@@ -16,14 +16,6 @@ data "hcloud_zone" "zone" {
   name = "n0d.site"
 }
 
-resource "hcloud_zone_rrset" "gw" {
-  zone = "n0d.site"
-  name = "gw"
-  type = "A"
-  ttl  = 60
-
-  records = [{ value = "192.168.1.1" }]
-}
 
 resource "hcloud_zone_rrset" "kvm" {
   zone = "n0d.site"
