@@ -4,6 +4,11 @@
 ## package direnv
 ## Store state in s3 like minio
 
+## State files saved on remote
+Authentication to minio is in .aws/credentials separate profile minio.
+There main (default) AWS profile to create resources on AWS Cloud.
+Addiotional profile garage was created to test garagehq for store state file.
+
 ~/.aws/credentials
 ```
 [minio]
@@ -61,3 +66,15 @@ After change made to store state file in s3 execute this command to enable.
 ```
 terraform init -reconfigure
 ```
+
+## NOT tested state storage on consul
+```
+terraform {
+  backend "consul" {
+    address = "http://consul:8500"
+    path    = "terraform/state"
+    lock    = true
+  }
+}
+```
+
