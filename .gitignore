@@ -6,6 +6,10 @@
 # Local .terraform directories
 .terraform/
 
+.idea
+*.iml
+*.ini
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

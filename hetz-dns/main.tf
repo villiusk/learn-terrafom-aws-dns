@@ -44,3 +44,12 @@ resource "hcloud_zone_rrset" "garage" {
 
   records = [{ value = "192.168.1.11" }]
 }
+
+resource "hcloud_zone_rrset" "lock" {
+  zone = "n0d.site"
+  name = "lock"
+  type = "A"
+  ttl  = 60
+
+  records = [{ value = "192.168.1.11" }]
+}
