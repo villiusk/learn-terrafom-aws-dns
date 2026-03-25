@@ -10,7 +10,7 @@ terraform {
     bucket                      = "tfstate"
     key                         = "hetzner-dns/terraform.tfstate"
     region                      = "eu-north-1"
-    endpoints                   = { s3 = "http://minio.n0d.site:9000" }
+    endpoints                   = { s3 = "http://vault.n0d.site:9000" }
     use_path_style              = true
     skip_credentials_validation = true
     skip_region_validation      = true

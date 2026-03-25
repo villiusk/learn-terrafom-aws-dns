@@ -1,0 +1,19 @@
+dns_records = {
+  kvm = {
+    value = "192.168.1.4"
+    ttl   = 60
+  }
+  minio = {
+    value = "192.168.1.11"
+    ttl   = 60
+  }
+  garage = {
+    value = "192.168.1.11"
+    ttl   = 60
+  }
+  rpi4 = {
+    value = "192.168.1.11"
+    ttl   = 60
+  }
+}
+
