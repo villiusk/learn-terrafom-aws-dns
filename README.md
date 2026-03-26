@@ -37,6 +37,7 @@ terraform {
 
     # <-- THIS prevents conflict:
     profile = "minio"
+    use_lockfile = true
   }
 }
 
@@ -78,3 +79,30 @@ terraform {
 }
 ```
 
+## Search latest AMI 
+For search AMI need to know ownerid and image search pattern.
+My  sugeted way to find AMI in AWS  console and using second command findout ownerid and search pattern.
+
+```
+aws ec2 describe-images --image-ids ami-01ef747f983799d6f --query "Images[*].OwnerId" --output text
+aws ec2 describe-images --image-ids ami-01ef747f983799d6f --region eu-north-1
+```
+
+
+```
+data "aws_ami" "example" {
+  most_recent = true
+  #owners      = ["099720109477"] # Owner is Canonical
+  owners = ["136693071363"] # Owner amazon debian
+
+  filter {
+    name   = "name"
+    values = ["debian-13-amd64-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+```
